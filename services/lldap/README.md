@@ -42,6 +42,9 @@ The target host must have Docker Engine, the Docker Compose v2 plugin, and the A
 Run this command from the repository root:
 
 ```sh
+set -a
+. services/.env
+set +a
 ansible-playbook -i services/inventory/inventory.yml services/openldap-keycloak/deploy.yml
 ```
 

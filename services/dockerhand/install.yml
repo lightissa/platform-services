@@ -1,0 +1,13 @@
+---
+- name: Install Dockerhand
+  hosts: all
+  become: true
+
+  tasks:
+    - name: Run the Dockerhand container
+      community.docker.docker_container:
+        name: dockerhand
+        image: dockerhand:latest
+        state: started
+        pull: always
+        restart_policy: unless-stopped

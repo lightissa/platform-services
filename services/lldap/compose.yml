@@ -1,0 +1,20 @@
+services:
+  lldap:
+    image: lldap/lldap:stable
+    restart: unless-stopped
+    ports:
+      - "3890:3890"
+    volumes:
+      - lldap_data:/data
+    environment:
+      - UID=1000
+      - GID=1000
+      - TZ=Europe/Paris
+      - LLDAP_JWT_SECRET=${LLDAP_JWT_SECRET}
+      - LLDAP_KEY_SEED=${LLDAP_KEY_SEED}
+      - LLDAP_LDAP_BASE_DN=${LLDAP_LDAP_BASE_DN}
+      - LLDAP_LDAP_USER_DN=admin
+      - LLDAP_LDAP_USER_PASS=${LLDAP_LDAP_USER_PASS}
+
+volumes:
+  lldap_data:
